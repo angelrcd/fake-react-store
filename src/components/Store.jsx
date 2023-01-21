@@ -14,11 +14,13 @@ export default function Store() {
   const filteredProduct = useMemo(()=>{
     if(!products) return;
 
-    return products.filter(product => {
+    return products
+    .filter(product => {
       const searchToCompare = product.title + product.brand + product.category;
 
       return searchToCompare.toUpperCase().includes(searchValue.toUpperCase()) &&  (categoryFilterValue==="none" || product.category === categoryFilterValue)     
-    }).sort((a,b)=> (sortBy(sortType))(a,b))
+    })
+    .sort((a,b)=> (sortBy(sortType))(a,b))
   }, [products,searchValue, categoryFilterValue, sortType])
 
   if(isLoading){
