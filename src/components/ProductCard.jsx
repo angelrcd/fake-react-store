@@ -28,7 +28,7 @@ export default function ProductCard( {product} ) {
         <label htmlFor={`my-modal-${product.id}`} className="modal cursor-pointer">
           <label className="modal-box relative p-0" htmlFor="">
             <div className="card lg:card-side bg-base-100 shadow-xl">
-              <figure><img src={product.thumbnail} alt="Album"/></figure>
+              <figure><img className='h-full' src={product.thumbnail} alt="Album"/></figure>
               <div className="card-body">
                 <h2 className="card-title">{product.title}</h2>
                 <p>{product.description}</p>
