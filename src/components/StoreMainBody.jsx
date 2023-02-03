@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import ProductCard from './ProductCard'
 
-export default function StoreMainBody({ products }) {
+export default function StoreMainBody({ products, addItemToCart }) {
   const [currentPage, setCurrentPage] = useState(0)
 
   const separateByPages =(products)=>{
@@ -39,7 +39,7 @@ export default function StoreMainBody({ products }) {
     <>
       <ul className='gallery my-10'>
         {productsInPage.map(product => {
-          return <li key={product.id}><ProductCard product={product} /></li>
+          return <li key={product.id}><ProductCard product={product} addItemToCart={addItemToCart} /></li>
         })}
       </ul>
 

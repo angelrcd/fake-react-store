@@ -1,7 +1,7 @@
 import React from 'react'
 import Rating from './Rating'
 
-export default function ProductCard( {product} ) {
+export default function ProductCard( {product, addItemToCart} ) {
   return (
     <div className="card w-96 bg-base-200 shadow-xl">
       <figure><img className='max-h-72' src={product.thumbnail} alt={product.title} /></figure>
@@ -19,7 +19,7 @@ export default function ProductCard( {product} ) {
               <p>More info</p>
             </label>
           </div>
-          <button className="btn btn-primary">Buy Now</button>
+          <button onClick={()=> addItemToCart(product)} className="btn btn-primary">Buy Now</button>
         </div>
       </div>
 

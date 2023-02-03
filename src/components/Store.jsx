@@ -7,6 +7,7 @@ import sortBy from '../modules/sortProducts'
 
 export default function Store() {
   const {products, isLoading, error} = useGetProducts()
+  const [cart, setCart] = useState([])
   const [searchValue, setSearchValue] = useState('')
   const [categoryFilterValue, setCategoryFilterValue] = useState('none')
   const [sortType, setSortType] = useState('category')
@@ -15,6 +16,7 @@ export default function Store() {
     if(!products) return;
 
     return products
+    // Filtra por busqueda y categoría
     .filter(product => {
       const searchToCompare = product.title + product.brand + product.category;
 
@@ -22,6 +24,12 @@ export default function Store() {
     })
     .sort((a,b)=> (sortBy(sortType))(a,b))
   }, [products,searchValue, categoryFilterValue, sortType])
+
+  const addItemToCart =(newItem)=>{
+    const updatedCart = cart.slice()
+    updatedCart.push(newItem)
+    setCart(updatedCart)
+  }
 
   if(isLoading){
     return <p>Cargando</p>
@@ -37,8 +45,11 @@ export default function Store() {
           onCategoryFilterChange={setCategoryFilterValue}
           sortType={sortType}
           onSortTypeChange={setSortType}
+          cart={cart}
         />
-        <StoreMainBody products={filteredProduct} />
+        <StoreMainBody 
+          products={filteredProduct}
+          addItemToCart={addItemToCart} />
       </>
     )
   }
