@@ -32,7 +32,9 @@ export default function SearchFilterBar({ searchValue, onSearchTextChange, categ
           <div className="divider divider-horizontal"></div>
           <div className="indicator mr-5">
             <span className="indicator-item badge badge-primary">{numberOfItemsInCart}</span>
-            <label htmlFor="my-modal-cart" className="btn">Cart</label>
+            <label htmlFor="my-modal-cart" className="btn btn-ghost">
+              <img className='h-10' src="/cart.svg" alt="" />
+            </label>
           </div>
           <div className='btn-group'>
             <label className='cursor-pointer btn btn-primary' htmlFor="search-bar">
