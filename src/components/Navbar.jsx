@@ -16,7 +16,7 @@ export default function Navbar() {
           <Link to="/about">
             <li className='btn btn-ghost normal-case text-lg'>About me</li>
           </Link>
-          <Link to="/store">
+          <Link to="/store/products">
             <li className='btn btn-ghost normal-case text-lg'>Products</li>          
           </Link>
           <div className="divider divider-horizontal"></div>

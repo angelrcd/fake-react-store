@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { categories } from '../modules/categoryList'
 
 export default function SearchFilterBar({ searchValue, onSearchTextChange, categoryFilterValue, onCategoryFilterChange, sortType, onSortTypeChange, cart }) {
@@ -32,9 +33,11 @@ export default function SearchFilterBar({ searchValue, onSearchTextChange, categ
           <div className="divider divider-horizontal"></div>
           <div className="indicator mr-5">
             <span className="indicator-item badge badge-primary">{numberOfItemsInCart}</span>
-            <label htmlFor="my-modal-cart" className="btn btn-ghost">
-              <img className='h-10' src="/cart.svg" alt="" />
-            </label>
+            <Link to="/store/cart">
+              <button className="btn btn-ghost">
+                <img className='h-10' src="/cart.svg" alt="" />
+              </button>
+            </Link>
           </div>
           <div className='btn-group'>
             <label className='cursor-pointer btn btn-primary' htmlFor="search-bar">
@@ -44,22 +47,6 @@ export default function SearchFilterBar({ searchValue, onSearchTextChange, categ
           </div>
         </div>
       </div>
-
-      <input type="checkbox" id="my-modal-cart" className="modal-toggle" />
-      <label htmlFor="my-modal-cart" className="modal cursor-pointer">
-        <label className="modal-box relative" htmlFor="">
-          <h3 className="text-lg font-bold">Your cart: {numberOfItemsInCart} items</h3>
-          <ul>
-            {cart.map( itemInCart=>{
-              return (
-                <li>
-                  {itemInCart.title}
-                </li>
-              )
-            })}
-          </ul>
-        </label>
-      </label>
     </>
   )
 }

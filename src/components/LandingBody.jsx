@@ -7,7 +7,7 @@ export default function LandingBody() {
       <h1 className='font-bold text-4xl'>FAKE REACT STORE</h1>
       <img className='max-w-2xl' src="/bg-image.png" alt="cartoon woman shopping" />
       <p className='text-lg'>E-commerce front end made using React, data from ñsadfjasf API</p>
-      <Link to="/store">
+      <Link to="/store/products">
         <button className='btn btn-primary w-fit btn-lg'>GET STARTED &#9658;</button>
       </Link>
     </div>

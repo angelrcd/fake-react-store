@@ -1,7 +1,9 @@
 import React, { useMemo, useState } from 'react'
 import { useGetProducts } from '../modules/useGetProducts'
+import { Route, Routes } from 'react-router-dom'
 import SearchFilterBar from './SearchFilterBar'
 import StoreMainBody from './StoreMainBody'
+import Cart from './Cart'
 import sortBy from '../modules/sortProducts'
 
 
@@ -47,9 +49,17 @@ export default function Store() {
           onSortTypeChange={setSortType}
           cart={cart}
         />
-        <StoreMainBody 
-          products={filteredProduct}
-          addItemToCart={addItemToCart} />
+        <Routes>
+          <Route path="/products" element={
+            <StoreMainBody 
+            products={filteredProduct}
+            addItemToCart={addItemToCart} />
+          } />
+          <Route path="/cart" element={
+            <Cart cartItems={cart} />
+          } />
+        </Routes>
+        
       </>
     )
   }
