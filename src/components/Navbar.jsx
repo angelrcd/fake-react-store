@@ -13,7 +13,9 @@ export default function Navbar() {
       </div>
       <div className="navbar-end">
         <ul className="flex items-center">
-          <li className='btn btn-ghost normal-case text-lg'>About me</li>
+          <Link to="/about">
+            <li className='btn btn-ghost normal-case text-lg'>About me</li>
+          </Link>
           <Link to="/store">
             <li className='btn btn-ghost normal-case text-lg'>Products</li>          
           </Link>
