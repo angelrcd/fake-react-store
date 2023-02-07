@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import { useGetProducts } from '../modules/useGetProducts'
 import { Route, Routes } from 'react-router-dom'
 import SearchFilterBar from './SearchFilterBar'
@@ -6,10 +6,14 @@ import StoreMainBody from './StoreMainBody'
 import Cart from './Cart'
 import sortBy from '../modules/sortProducts'
 
+const store = window.localStorage
+const initial = store["cart"] ?? "[]"
+console.log(initial)
+
 
 export default function Store() {
   const {products, isLoading, error} = useGetProducts()
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState(JSON.parse(initial))
   const [searchValue, setSearchValue] = useState('')
   const [categoryFilterValue, setCategoryFilterValue] = useState('none')
   const [sortType, setSortType] = useState('category')
@@ -32,6 +36,10 @@ export default function Store() {
     updatedCart.push(newItem)
     setCart(updatedCart)
   }
+
+  useEffect(()=>{
+    store.setItem("cart", JSON.stringify(cart))
+  }, [cart])
 
   if(isLoading){
     return <p>Cargando</p>
