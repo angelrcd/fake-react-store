@@ -34,7 +34,7 @@ export default function ProductCard( {product, addItemToCart} ) {
                 <p>{product.description}</p>
                 <div className="card-actions justify-between items-center">
                   <p className='text-xl'>${product.price}</p>
-                  <button className="btn btn-primary">BUY NOW</button>
+                  <button onClick={()=> addItemToCart(product)} className="btn btn-primary">BUY NOW</button>
                 </div>
               </div>
             </div>
