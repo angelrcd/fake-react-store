@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CartItemCard({item}) {
+function CartItemCard({item, removeItemFromCart}) {
   return (
     <div className='w-full h-24 bg-base-200 my-3 flex justify-between items-center'>
       <div>
@@ -11,7 +11,7 @@ function CartItemCard({item}) {
         <div className='flex flex-col items-center'>
           <p>${item.price}</p>
           <div className='flex items-center'>
-            <span className="btn btn-ghost text-xl">-</span><p className='text-xl'>{item.ammount}</p><span className="btn btn-ghost text-xl">+</span>
+            <span onClick={()=> removeItemFromCart(item)} className="btn btn-ghost text-xl">-</span><p className='text-xl'>{item.ammount}</p><span className="btn btn-ghost text-xl">+</span>
           </div>
         </div>
         <button className='btn btn-ghost'>Delete</button>

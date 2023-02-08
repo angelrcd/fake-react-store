@@ -36,10 +36,21 @@ export default function Store() {
     updatedCart.push(newItem)
     setCart(updatedCart)
   }
+  
+  const removeItemFromCart =(itemToRemove)=>{
+    const updatedCart= structuredClone(cart)
+    let indexToRemove = updatedCart.findIndex(item => item.id === itemToRemove.id)
+    if (indexToRemove !== -1) {
+      updatedCart.splice(indexToRemove, 1)
+    }
+
+    setCart(updatedCart)
+  } 
 
   const emptyCart =()=> {
     setCart([])
   }
+
 
   useEffect(()=>{
     store.setItem("cart", JSON.stringify(cart))
@@ -68,7 +79,10 @@ export default function Store() {
             addItemToCart={addItemToCart} />
           } />
           <Route path="/cart" element={
-            <Cart cartItems={cart} emptyCart={emptyCart} />
+            <Cart cartItems={cart} 
+            emptyCart={emptyCart}
+            removeItemFromCart={removeItemFromCart}
+            />
           } />
         </Routes>
         

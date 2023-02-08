@@ -3,7 +3,7 @@ import CartItemCard from './CartItemCard'
 import groupsameCartItems from '../modules/groupSameCartItems'
 import { list } from 'postcss'
 
-function Cart( { cartItems,emptyCart } ) {
+function Cart( { cartItems,emptyCart, removeItemFromCart } ) {
 
   const cart = useMemo(()=>{
     return groupsameCartItems(cartItems)
@@ -21,7 +21,7 @@ function Cart( { cartItems,emptyCart } ) {
       <div className='flex gap-5'>
         <div className='ml-10 py-10 px-16 w-2/3 bg-base-300'>
           <ul>
-            {cart.map(item => <li><CartItemCard item={item} /></li>)}
+            {cart.map(item => <li><CartItemCard item={item} removeItemFromCart={removeItemFromCart} /></li>)}
           </ul>
         </div>
 
