@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import CartItemCard from './CartItemCard'
 import groupsameCartItems from '../modules/groupSameCartItems'
 import { list } from 'postcss'
@@ -11,6 +12,22 @@ function Cart( { cartItems,emptyCart, removeItemFromCart } ) {
 
   const cartSize = cartItems.length
 
+  const cartItemsList = (
+    <ul>
+      {cart.map(item => <li><CartItemCard item={item} removeItemFromCart={removeItemFromCart} /></li>)}
+    </ul>
+  )
+
+  const emptyCartMessage = (
+    <>
+      <p>It seems your cart is empty</p>
+        <Link to="/store/products">
+          <span className='btn btn-link normal-case px-0'>Buy products here</span>
+        </Link>
+    </>
+    
+  )
+
   return (
     <>
       <div className='py-10 px-16 '>
@@ -20,9 +37,7 @@ function Cart( { cartItems,emptyCart, removeItemFromCart } ) {
 
       <div className='flex gap-5'>
         <div className='ml-10 py-10 px-16 w-2/3 bg-base-300'>
-          <ul>
-            {cart.map(item => <li><CartItemCard item={item} removeItemFromCart={removeItemFromCart} /></li>)}
-          </ul>
+          {cartSize===0 ? emptyCartMessage : cartItemsList}
         </div>
 
         <div className='mx-10 py-10 px-16 w-1/3 h-fit bg-base-300'>
