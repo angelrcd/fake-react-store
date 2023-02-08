@@ -37,6 +37,10 @@ export default function Store() {
     setCart(updatedCart)
   }
 
+  const emptyCart =()=> {
+    setCart([])
+  }
+
   useEffect(()=>{
     store.setItem("cart", JSON.stringify(cart))
   }, [cart])
@@ -64,7 +68,7 @@ export default function Store() {
             addItemToCart={addItemToCart} />
           } />
           <Route path="/cart" element={
-            <Cart cartItems={cart} />
+            <Cart cartItems={cart} emptyCart={emptyCart} />
           } />
         </Routes>
         
