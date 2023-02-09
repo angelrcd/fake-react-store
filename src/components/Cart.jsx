@@ -4,7 +4,7 @@ import CartItemCard from './CartItemCard'
 import groupsameCartItems from '../modules/groupSameCartItems'
 import { list } from 'postcss'
 
-function Cart( { cartItems,emptyCart, removeItemFromCart } ) {
+function Cart( { cartItems,emptyCart, removeItemFromCart, increaseNumberOfItemInCart } ) {
 
   const cart = useMemo(()=>{
     return groupsameCartItems(cartItems)
@@ -14,7 +14,7 @@ function Cart( { cartItems,emptyCart, removeItemFromCart } ) {
 
   const cartItemsList = (
     <ul>
-      {cart.map(item => <li><CartItemCard item={item} removeItemFromCart={removeItemFromCart} /></li>)}
+      {cart.map(item => <li><CartItemCard item={item} removeItemFromCart={removeItemFromCart} increaseNumberOfItemInCart={increaseNumberOfItemInCart} /></li>)}
     </ul>
   )
 

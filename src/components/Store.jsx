@@ -43,9 +43,17 @@ export default function Store() {
     if (indexToRemove !== -1) {
       updatedCart.splice(indexToRemove, 1)
     }
-
     setCart(updatedCart)
   } 
+
+  const increaseNumberOfItemInCart=(itemToIncrease)=>{
+    const updatedCart= structuredClone(cart)
+    let indexToRemove = updatedCart.findIndex(item => item.id === itemToIncrease.id)
+    const itemToAdd = structuredClone(updatedCart[indexToRemove])
+    updatedCart.push(itemToAdd)
+    setCart(updatedCart)
+  }
+
 
   const emptyCart =()=> {
     setCart([])
@@ -82,6 +90,7 @@ export default function Store() {
             <Cart cartItems={cart} 
             emptyCart={emptyCart}
             removeItemFromCart={removeItemFromCart}
+            increaseNumberOfItemInCart={increaseNumberOfItemInCart}
             />
           } />
         </Routes>
