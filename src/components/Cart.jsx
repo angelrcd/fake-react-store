@@ -12,6 +12,9 @@ function Cart( { cartItems,emptyCart, removeItemFromCart, increaseNumberOfItemIn
   }, [cartItems])
 
   const cartSize = cartItems.length
+  const totalPrice = cartItems.reduce((accumulator, currentValue)=>{
+    return accumulator + currentValue.price
+  }, 0)
 
   const cartItemsList = (
     <ul>
@@ -46,7 +49,7 @@ function Cart( { cartItems,emptyCart, removeItemFromCart, increaseNumberOfItemIn
           <p>Subtotal: {cartSize} artículo(s)</p>
           <div className='flex justify-between'>
             <p>Total: </p>
-            <p className='text-xl font-semibold'>Precio</p>
+            <p className='text-xl font-semibold'>Precio {totalPrice}</p>
           </div>
         </div>
       </div>
