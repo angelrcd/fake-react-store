@@ -7,7 +7,8 @@ import { list } from 'postcss'
 function Cart( { cartItems,emptyCart, removeItemFromCart, increaseNumberOfItemInCart } ) {
 
   const cart = useMemo(()=>{
-    return groupsameCartItems(cartItems)
+    const itemsGrouped = groupsameCartItems(cartItems)
+    return itemsGrouped.sort((a,b)=> a.id- b.id)
   }, [cartItems])
 
   const cartSize = cartItems.length
