@@ -4,7 +4,7 @@ import CartItemCard from './CartItemCard'
 import groupsameCartItems from '../modules/groupSameCartItems'
 import { list } from 'postcss'
 
-function Cart( { cartItems,emptyCart, removeItemFromCart, increaseNumberOfItemInCart } ) {
+function Cart( { cartItems,emptyCart, removeItemFromCart, increaseNumberOfItemInCart, removeAllItemsOfOneId } ) {
 
   const cart = useMemo(()=>{
     const itemsGrouped = groupsameCartItems(cartItems)
@@ -18,7 +18,8 @@ function Cart( { cartItems,emptyCart, removeItemFromCart, increaseNumberOfItemIn
 
   const cartItemsList = (
     <ul>
-      {cart.map(item => <li><CartItemCard item={item} removeItemFromCart={removeItemFromCart} increaseNumberOfItemInCart={increaseNumberOfItemInCart} /></li>)}
+      {cart.map(item => <li><CartItemCard item={item} removeItemFromCart={removeItemFromCart}
+       increaseNumberOfItemInCart={increaseNumberOfItemInCart} removeAllItemsOfOneId={removeAllItemsOfOneId} /></li>)}
     </ul>
   )
 
@@ -49,7 +50,7 @@ function Cart( { cartItems,emptyCart, removeItemFromCart, increaseNumberOfItemIn
           <p>Subtotal: {cartSize} artículo(s)</p>
           <div className='flex justify-between'>
             <p>Total: </p>
-            <p className='text-xl font-semibold'>Precio {totalPrice}</p>
+            <p className='text-xl font-semibold'>Precio: ${totalPrice}</p>
           </div>
         </div>
       </div>

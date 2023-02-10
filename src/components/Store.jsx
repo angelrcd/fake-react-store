@@ -54,6 +54,29 @@ export default function Store() {
     setCart(updatedCart)
   }
 
+  const removeAllItemsOfOneId=(itemToRemove)=>{
+    const updatedCart= structuredClone(cart)
+    const indexes = []
+
+    //get indexes positions to delete
+    for(let i= 0; i<updatedCart.length;i++){
+      if(updatedCart[i].id === itemToRemove.id){
+        indexes.push(i)
+      }
+    }
+
+    console.log(indexes);
+
+    //remove the elements from indexes, starting from the last
+    for (let i = 0; i < indexes.length; i++) {
+      const indexToRemove = indexes.at(-i-1)
+      console.log(indexToRemove);    
+      updatedCart.splice(indexToRemove, 1)
+    }
+
+    setCart(updatedCart)
+  }
+
 
   const emptyCart =()=> {
     setCart([])
@@ -91,6 +114,7 @@ export default function Store() {
             emptyCart={emptyCart}
             removeItemFromCart={removeItemFromCart}
             increaseNumberOfItemInCart={increaseNumberOfItemInCart}
+            removeAllItemsOfOneId={removeAllItemsOfOneId}
             />
           } />
         </Routes>
